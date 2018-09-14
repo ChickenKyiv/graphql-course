@@ -1,0 +1,13 @@
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+.flex-container > div {
+  border: 1px solid black;
+  padding: 15px;
+}
+/* .child {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+} */

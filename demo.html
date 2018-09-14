@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+				<section>
+					<h1>
+						Flexbox module guide
+					</h1>
+					<h3>
+						Code project: recipe details page, created by using flexible items
+					</h3>
+					<p>
+						<small>Created by Arthur Tkachenko</small>
+					</p>
+				</section>
+
+
+
+
+
+				<section>
+					<h4>
+						History
+					</h4>
+					<p>
+						CSS 2.1 defined four layout modes — algorithms which determine the size and position of boxes based on their relationships with their sibling and ancestor boxes:
+					</p>
+					<ul>
+						<li>block layout, designed for laying out documents
+						</li>
+						<li>inline layout, designed for laying out text
+						</li>
+						<li>table layout, designed for laying out 2D data in a tabular format
+						</li>
+						<li>positioned layout, designed for very explicit positioning without much regard for other elements in the document
+						</li>
+					</ul>
+
+				</section>
+
+
+
+
+
+				<section>
+					<h4>
+						Basic terms
+					</h4>
+
+
+!!!!This module introduces a new layout mode, flex layout, which is designed for laying out more complex applications and webpages.
+
+
+
+					<p class="fragment">
+						Flexbox layout
+						<span class="blue">(Flexible box) </span>
+
+						aiming to provide a more efficient way to create layout, align and adjust space between
+						items in container, even if size is unknown or dynamic.
+					</p>
+
+					<p class="fragment">
+
+						This is why we use term
+						<span class="blue">"flex"</span> for this child items.
+						Main idea is to give ability to alter width and height
+						and order to child elements.
+
+						It can fit to big part of process, relate to adjustment
+						web pages for different devices and screens
+
+					</p>
+					<p class="fragment">
+						<span class="blue">Note:</span>
+
+							 Flexbox is better to use for components, small sized layouts.
+							While Grid system is better choice for large scale layouts.
+					</p>
+				</section>
+
+
+				<section>
+					<h4>
+						What is flexbox?
+					</h4>
+					<p>
+						Flexbox is a set of CSS rules. it envolve a lot of things. Flexbox have a hierarchy in CSS rules.
+						Some rules related to a parent components
+						<span class="green">
+							(Flex Container)
+						</span>
+
+ 						and child components
+						<span class="green">
+							(Flex Items)
+						</span>
+
+						Regular CSS blocks use Block + Inline directions.
+
+						Flexbox is based on their own directions.
+					</p>
+				</section>
+
+
+				<section>
+					<h4>
+						Flexbox Axis
+					</h4>
+					<p>
+						usually items go from MainStart to MainEnd
+					</p>
+					<p>
+						<img data-src="img/flex-axes.png" style="width:80%;" />
+
+					</p>
+
+				</section>
+
+
+				<section>
+					<!-- <h4>
+						Flexbox Axis
+					</h4> -->
+					<p>
+						<p class="fragment align">
+							<span class="green">Main Axis</span>
+								- primary line along which flex items are laid off. can be horizontal or vertical.
+						</p>
+						<p class="fragment align">
+							<span class="green">Main Start, Main End</span>
+							 - place where flex items are placed(inside container)
+						</p>
+
+						<p class="fragment align">
+							<span class="green">Main Size</span>
+							- depends on what main dimension is. it can be flex item width or height.
+						</p>
+
+
+						<!-- <ul>
+						  <li>No order here</li>
+						  <li>Or here</li>
+						  <li>Or here</li>
+						  <li>Or here</li>
+						</ul> -->
+
+					</p>
+				</section>
+
+				<section>
+
+					<p class="fragment align">
+						<span class="green">Cross-Axis</span>
+						It's an axis perpendicular to the main aixs.
+						it direction depends on main axis directions
+					</p>
+					<p class="fragment align">
+						<span class="green">Cross-Start, Cross-End</span>
+						- Flex line, filled with items and placed into container.
+
+					</p>
+
+					<p class="fragment align">
+						<span class="green">cross-size </span>
+						- width or height of a flex item......
+
+					</p>
+
+				</section>
+
+				<!-- <pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre> -->
+
+
+
+
+				<section>
+					<h4>
+						Properties for the parent element
+					</h4>
+
+					<ul>
+						<li>display</li>
+						<li>flex-directions</li>
+						<li>row</li>
+						<li>row-reverse</li>
+						<li>column</li>
+						<li>column-reverse</li>
+					</ul>
+
+				</section>
+
+
+				<section>
+					<!-- <h4>
+						Properties for the parent element
+					</h4> -->
+					<p class="fragment">
+						<span class="green">display:</span>
+						defines a flex container. it can on/off the Flexbox magic.
+						without this rule -> wouldn't work
+
+						code| container {display: flex or inline-flex}
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+						container {display: flex or inline-flex}
+						</code>
+						</pre>
+
+					</p>
+
+					<p class="fragment align">
+						<span class="green">flex-directions:</span>
+						 defines how inside are appeared. Good and easy for manipulation. it'll manipulate main-axis.
+					</p>
+
+
+					<p class="fragment align">
+						<span class="green">row:</span>
+						display items left to right
+					</p>
+
+
+
+				</section>
+
+
+
+
+				<section>
+
+					<p class="fragment align">
+						<span class="green">row-reverse:</span>
+						display items right to left
+					</p>
+
+					<p class="fragment">
+						<span class="green">column:</span>
+						display items same to row, but top to bottom
+					</p>
+
+					<p class="fragment align">
+						<span class="green">column-reverse:</span>
+						display items bottom to top
+					</p>
+
+
+				</section>
+
+
+
+				<section>
+					<h4>
+						Hello There
+					</h4>
+
+
+						<p>
+							<ul>
+							  <li>flex-wrap</li>
+							  <li>nowrap</li>
+							  <li>wrap</li>
+							  <li>wrap-reverse</li>
+							</ul>
+						</p>
+
+
+
+				</section>
+
+				<section>
+
+					<p class="fragment align">
+						<span class="green">flex-wrap:</span>
+						define if flex item, that cannot fit to the Inline
+					</p>
+
+					<p class="fragment align">
+						<span class="green">nowrap:</span>
+						 default section, all items should be one line
+					</p>
+
+					<p class="fragment align">
+						<span class="green">wrap:</span>
+						flex items will fill onto multiple lines from top to bottom
+					</p>
+
+					<p class="fragment align">
+						<span class="green">wrap-reverse:</span>
+						 flex items, but from bottom to top
+					</p>
+
+				</section>
+
+				<section>
+					<h4>
+						Hello There
+					</h4>
+
+					<p class="fragment align">
+						<span class="green">flex-flow:</span>
+						(direction or wrap)
+						it's a short version of 2 style rules, it's save time and equal \ default settings equal to
+						`flex-div` row & `flex-wrap` nowrap
+					</p>
+				</section>
+
+
+				<section>
+					<h4>
+						justify-content
+					</h4>
+					<p>
+						more advanced version that we can have in default CSS rules.
+						partially was done at Bootstrap(same logic, different realization by "hacks")
+
+					</p>
+
+					<p>
+						<ul>
+							<li>flex-start</li>
+							<li>flex-end</li>
+							<li>center</li>
+							<li>space-between</li>
+							<li>space-around</li>
+							<li>space-evenly</li>
+						</ul>
+
+					</p>
+				</section>
+
+				<section>
+
+					<p class="fragment align">
+						<span class="green">flex-start:</span>
+						items are packed toward the start line
+					</p>
+
+					<p class="fragment align">
+						<span class="green">flex-end:</span>
+						items are packed toward the end line
+					</p>
+
+					<p class="fragment align">
+						<span class="green">center:</span>
+						items centered along the line
+					</p>
+				</section>
+
+				<section>
+
+					<p class="fragment align">
+						<span class="green">space-between:</span>
+						items are evenly distributed in the line.
+						first item is on the start line, last item on the end line.
+					</p>
+
+					<p class="fragment align">
+						<span class="green">space-around:</span>
+						items are evenly distributed in the line with the equal space on both sides.
+						first item will have one unit of space against to parent
+						container but next item will have 2 units of space between the next item,
+						because that next item has it's own spacing
+					</p>
+
+					<p class="fragment align">
+						<span class="green">space-evenly:</span>
+						items are distributed so that the spacing between any two items is equal.
+
+					</p>
+
+				</section>
+
+				<section>
+					<h4>
+						align-items
+					</h4>
+					<p>
+						!!!!align-items before flex module was this logic released, it can be done only by jQuery plugins.
+						 defines default behavior for how flex items are laid out along the cross-axis.
+					</p>
+
+							<ul>
+							  <li>flex-start</li>
+							  <li>flex-end</li>
+							  <li>center</li>
+							  <li>baseline</li>
+								<li>stretch</li>
+							</ul>
+						</p>
+
+				</section>
+
+
+				<section>
+					<p class="fragment align">
+						<span class="green">flex-start:</span>
+						cross-start margin edge is placed on the cross-start line
+					</p>
+
+					<p class="fragment align">
+						<span class="green">flex-end:</span>
+						cross-end margin edge of the items, placed on the cross-end line
+					</p>
+
+					<p class="fragment align">
+						<span class="green">center:</span>
+						items centered in the cross-axis
+					</p>
+				</section>
+
+
+				<section>
+
+						<p class="fragment align">
+							<span class="green">baseline:</span>
+							items are aligned such as their baseline
+
+						</p>
+
+						<p class="fragment align">
+
+							<span class="green">stretch:</span>
+							it's a default settings stretched to fill the container (still respect min-width/max-width)
+
+						</p>
+
+				</section>
+
+
+
+				<section>
+					<p>
+						align-content inside elements will fill the empty space by different logic (it's a very important rule)
+						applied to all elements inside. same to justify-content align individual items
+					</p>
+
+					<p>
+						<ul>
+							<li>flex-start</li>
+							<li>flex-end</li>
+							<li>center</li>
+							<li>space-between</li>
+							<li>space-around</li>
+							<li>stretch</li>
+
+						</ul>
+					</p>
+				</section>
+
+
+
+					<section>
+						<p class="fragment align">
+							<span class="green">flex-start:</span>
+							lines packed to the start of the container
+						</p>
+
+						<p class="fragment align">
+							<span class="green">flex-end:</span>
+							lines packed to the end of the container
+
+						</p>
+						<p class="fragment align">
+							<span class="green">center:</span>
+							lines packed to the center of container
+
+						</p>
+					</section>
+
+					<section>
+						<p class="fragment align">
+							<span class="green">space-between:</span>
+							lines evenly distributed, the first line is at start of container, last one - at the end
+						</p>
+
+						<p class="fragment align">
+							<span class="green">space-around:</span>
+							lines evenly distributed with equal space around each line
+						</p>
+
+						<p class="fragment align">
+							<span class="green">stretch:</span>
+							(default setting) line stretch to take up remaining space.
+						</p>
+
+				</section>
+
+
+				<section>
+					<p>
+					OK, it was all instructions related to flex container.
+					</p>
+					<p>
+					Flex items is next!
+					</p>
+				</section>
+
+				<section>
+					<h4>
+						Properties for the children (flex items)
+					</h4>
+					<p class="fragment align">
+
+						<span class="green">order:</span>
+						self-explanatory, before you can do it only with DOM manipulation via javascript or at server side.
+						default is 0.
+					</p>
+
+					<p class="fragment align">
+
+
+						<span class="green">flex-grow:</span>
+						important rule, because now you can calm about amount of container inside. Important
+								for different screen sizes. Same a lot of times for Frontend Developers that use it.
+								define ability to grow(if necessary) works as proportion. Number of this rule dictates what amount of
+								the available space inside the flex container the item should take up.
+								it all items have flex-grow = 1, all remaining space will be distributed equally to all children.
+								if one item has value 2 -> remaining space would take up twice(increased 2x) as others
+
+					</p>
+
+				</section>
+
+
+				<section>
+					<h4>
+						Hello There
+					</h4>
+					<p class="fragment align">
+
+						<span class="green">flex-shrink:</span>
+						define an ability for a item to shrink if it necessary. negative numbers invalid.
+
+					</p>
+					<p class="fragment align">
+
+						<span class="green">flex-basis:</span>
+						define default size of an element before the remaining space is distributed.
+						can be a lenght or keyword.
+
+					</p>
+					<p class="fragment align">
+						<span class="green">auto:</span>
+						auto term means (looks only at width or height property)
+					</p>
+
+
+
+					<p class="fragment align">
+						<span class="green">content:</span>
+						keyword means (size based on content) but content is not 100% supported well
+					</p>
+
+					<p>
+
+						Before you should add classes, that will handle that.
+						Only positive numbers.
+
+
+
+						if set 0 - extra space not counting
+						if set auto - extra space will be distributed based on 'flex-grow' value
+
+						<!-- <ul>
+						  <li>No order here</li>
+						  <li>Or here</li>
+						  <li>Or here</li>
+						  <li>Or here</li>
+						</ul> -->
+
+
+
+
+						<p class="fragment align">
+
+							<span class="green">flex:</span>
+							this css rule is a short version
+
+							first section is equal to flex-grow,
+							second equal to flex-shrink
+							third equal to flex-basis
+
+							second, third is optional.
+							default setting is `0 auto 1;`
+
+							better to use this property. because it make code clear.
+						</p>
+
+
+
+					</p>
+				</section>
+
+
+				<!-- <section>
+					<h4>
+						Hello There
+					</h4>
+					<p>
+						[image]
+												<img data-src="img/flex-axes.png" style="width:80%;" />
+					</p>
+				</section> -->
+
+				<section>
+					<h4>
+						align-self rule
+					</h4>
+
+
+					<p class="fragment align">
+
+						<span class="green">align-self:</span>
+						sometimes you need to override position of one or few elements instead of setting
+						rules for each item. used in custom cases only.
+
+						can align and override main rules.
+
+						float, clear and vertical align. wouldn't work on flex item.
+
+					</p>
+
+					<ul>
+						<li>auto</li>
+						<li>flex-start</li>
+						<li>flex-end</li>
+						<li>centerOr here</li>
+						<li>baseline</li>
+					</ul>
+
+
+
+				</section>
+
+				<section>
+
+						<p class="fragment align">
+
+
+							<span class="green">auto:</span>
+							xxx
+						</p>
+						<p class="fragment align">
+
+
+								<span class="green">flex-start:</span>
+								xxx
+						</p>
+						<p class="fragment align">
+
+
+								<span class="green">flex-end:</span>
+								xxx
+						</p>
+
+				</section>
+
+				<section>
+					<p class="fragment align">
+
+						<span class="green">center:</span>
+						xxx
+					</p>
+					<p class="fragment align">
+
+
+
+						<span class="green">baseline:</span>
+						xxx
+					</p>
+				</section>
+<!-- <pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre> -->
+
+				<section>
+					<h4>
+						Hello There
+					</h4>
+					<p>
+
+
+							<span class="green">Example:</span>
+							 perfect centering with few elements inside container.
+						relies of margin auto rule. it absorbed all extra space.
+
+						Let's have a list of 6 items with fixed dimensions but they will be auto-sized.
+
+						All items will have evenly on horizontal Axis so when you resize browser, all will looks fine and without media queries
+						(Fuh) Media queries is good, but it's not perfect.
+					</p>
+				</section>
+
+
+
+
+				<section>
+		      <section>
+		        <h2>Great, what about support?</h2>
+
+		        <p>"Can I Use?" statistic</p>
+		        <p>Use the <em>Space</em> key to navigate through all slides.</p>
+		        <br>
+		        <a href="#" class="navigate-down">
+		          <!-- <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow"> -->
+							<img data-src="img/support/caniuse.png" style="width:80%;" />
+		        </a>
+
+		      </section>
+		      <section>
+		        <h2>Bootstrap git SASS grid file</h2>
+		        <p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+						<img data-src="img/support/bootstrap-git.png" style="width:80%;" />
+		      </section>
+					<section>
+		        <h2>Bootstrap blog post</h2>
+		        <p>That's it, time to go back up.</p>
+		        <br>
+		        <a href="#/2">
+		          <!-- <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);"> -->
+							<img data-src="img/support/bootstrap-blog.png" style="width:80%;" />
+		        </a>
+		      </section>
+					<section>
+		        <h2>Slack markup</h2>
+		        <p>That's it, time to go back up.</p>
+		        <br>
+		        <a href="#/2">
+		          <!-- <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);"> -->
+							<img data-src="img/support/slack.png" style="width:80%;" />
+		        </a>
+		      </section>
+					<section>
+		        <h2>Youtube.com markup</h2>
+		        <p>That's it, time to go back up.</p>
+		        <br>
+		        <a href="#/2">
+		          <!-- <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);"> -->
+							<img data-src="img/support/youtube.png" style="width:80%;" />
+		        </a>
+		      </section>
+					<section>
+		        <h2>Javascript.com markup</h2>
+		        <p>That's it, time to go back up.</p>
+		        <br>
+		        <a href="#/2">
+		          <!-- <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);"> -->
+							<img data-src="img/support/javascript.com.png" style="width:80%;" />
+		        </a>
+		      </section>
+
+		    </section>
+
+
+
+
+
+
+
+
+
+
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Vertical Slides</h2>
+						<p>Slides can be nested inside of each other.</p>
+						<p>Use the <em>Space</em> key to navigate through all slides.</p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 1</h2>
+						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+					</section>
+					<section>
+						<h2>Basement Level 2</h2>
+						<p>That's it, time to go back up.</p>
+						<br>
+						<a href="#/2">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+
+
+
+				<section>
+					<h2>Slides</h2>
+					<p>
+						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="https://slides.com" target="_blank">https://slides.com</a>.
+					</p>
+				</section>
+
+
+				<section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview.
+					</p>
+					<p>
+						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+					</p>
+				</section>
+
+
+				<section>
+					<h2>Touch Optimized</h2>
+					<p>
+						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
+					</p>
+				</section>
+
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+
+
+				<section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span>
+							 <span class="fragment">fragmented</span>
+							  <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p>
+							<span style="display: inline-block;" class="fragment fade-right">fade-right, </span>
+							<span style="display: inline-block;" class="fragment fade-up">up, </span>
+							<span style="display: inline-block;" class="fragment fade-down">down, </span>
+							<span style="display: inline-block;" class="fragment fade-left">left</span>
+						</p>
+						<p class="fragment fade-in-then-out">fade-in-then-out</p>
+						<p class="fragment fade-in-then-semi-out">fade-in-then-semi-out</p>
+						<p>Highlight <span class="fragment highlight-red">red</span>
+							 <span class="fragment highlight-blue">blue</span>
+							 <span class="fragment highlight-green">green</span></p>
+					</section>
+				</section>
+
+
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+
+				<section>
+					<section data-background="#dddddd">
+						<h2>Slide Backgrounds</h2>
+						<p>
+							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
+						</p>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
+						<h2>Image Backgrounds</h2>
+						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
+					</section>
+					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
+						<h2>Tiled Backgrounds</h2>
+						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
+					</section>
+					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
+						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
+							<h2>Video Backgrounds</h2>
+							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
+						</div>
+					</section>
+					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+						<h2>... and GIFs!</h2>
+					</section>
+				</section>
+
+
+
+				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+					</p>
+					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+				</section>
+
+
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						You can override background transitions per-slide.
+					</p>
+					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				</section>
+
+
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+
+
+
+				<section>
+					<h2>Marvelous List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+
+
+
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+
+
+
+				<section>
+					<h2>Tabular Tables</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Item</th>
+								<th>Value</th>
+								<th>Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Apples</td>
+								<td>$1</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td>Lemonade</td>
+								<td>$2</td>
+								<td>18</td>
+							</tr>
+							<tr>
+								<td>Bread</td>
+								<td>$3</td>
+								<td>2</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">The nice thing about standards is that there are so many to choose from</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+
+
+				<section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
+					<iframe data-src="https://www.slideshare.net/slideshow/embed_code/42840540" width="445" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+				</section>
+
+
+
+				<section>
+					<h2>Global State</h2>
+					<p>
+						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+						will be added as a class to the document element when the slide is open. This lets you
+						apply broader style changes, like switching the page background.
+					</p>
+				</section>
+
+
+
+				<section data-state="customevent">
+					<h2>State Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
+Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
+					</p>
+				</section>
+
+				<section>
+					<h2>Much more</h2>
+					<ul>
+						<li>Right-to-left support</li>
+						<li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+					<p>
+						- <a href="https://slides.com">Try the online editor</a> <br>
+						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

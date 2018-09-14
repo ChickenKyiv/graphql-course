@@ -1,0 +1,24 @@
+.navigation {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.navigation > * {
+  padding: 15px;
+  border: 2px solid black;
+}
+
+/* Medium device screen */
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+
+/* For devices with small screen */
+@media all and (max-width: 500px) {
+  .navigation {
+    flex-direction: column;
+  }
+}

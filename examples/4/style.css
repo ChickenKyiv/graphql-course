@@ -1,0 +1,59 @@
+.wrapper {
+  display: flex;
+}
+
+we tell all items to be 100% width
+.wrapper > * {
+  flex: 1 100%;
+}
+
+
+- wrapper
+  -- header
+  -- article
+  -- aside 1
+  -- aside 2
+  -- footer
+
+/* we rely on source order for mobile-first approach
+in this case:
+1. header
+2. article
+3. aside 1
+4. aside 2
+5. footer  */
+
+/* Medium screens
+Both sidebars will be sharing one row for this case
+*/
+@media all and (min-width: 600px) {
+  .aside {
+    flex: 1 auto;
+  }
+}
+
+
+/* larger screens */
+@media all and (mix-width; 800px){
+  /* we invert order of first sidebar and main  */
+  /* And tell the main element to take twice as much width as the content
+  So as you can see - we dont' need to make changes in DOM in order to display elements differently
+  it was more complicated without using flexboxes. Partially non-possible without using jQuery methods
+   */
+   .main {
+     flex: 2 0px;
+   }
+   .aside-1 {
+     order: 1;
+   }
+   .main {
+     order: 2;
+   }
+   .aside-2 {
+     order: 3;
+   }
+   .footer {
+     order: 4;
+   }
+
+}

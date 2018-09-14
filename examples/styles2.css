@@ -1,0 +1,17 @@
+.column {
+  background: tomato;
+  min-height: 100px;
+/*   margin: 20px; */
+}
+
+.flexbox-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.column {
+  flex: 0 1 46%;
+}
+
+https://codepen.io/blogjunkie/pen/LzPJQr
